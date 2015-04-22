@@ -1,0 +1,15 @@
+<package>
+  <description brief="roche_description_gazebo">
+
+     roche_description_gazebo
+
+  </description>
+  <author>Felix</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/roche_description_gazebo</url>
+  <depend package="urdf"/>
+
+</package>
+
+

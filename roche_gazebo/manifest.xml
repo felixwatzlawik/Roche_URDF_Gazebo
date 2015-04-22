@@ -1,0 +1,19 @@
+<package>
+  <description brief="roche_gazebo">
+
+     roche_gazebo
+
+  </description>
+  <author>Felix</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/roche_gazebo</url>
+  <depend package="gazebo_plugins"/>
+  <depend package="gazebo_msgs"/>
+  <depend package="gazebo_ros"/>
+  <depend package="gazebo_ros_control"/>
+  <depend package="roche_description_gazebo"/>
+
+</package>
+
+

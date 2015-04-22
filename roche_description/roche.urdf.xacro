@@ -1,0 +1,103 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="roche">
+
+<xacro:include filename="materials.urdf.xacro"/>
+<xacro:property name="wheel_diameter" value="0.2"/>
+<xacro:property name="wheel_height" value="0.1"/>
+<xacro:property name="wheel_distance" value="0.4"/>
+<xacro:property name="wheel_material" value="DarkGray"/>
+<xacro:property name="wheel_offset_z" value="-0.05"/>
+
+<!--Links-->
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<box size="0.5 0.8 0.1"/>
+			</geometry>
+			<material name="Black"/>
+		</visual>
+	</link>
+
+	<link name="wheel_l_b">
+		<visual>
+			<geometry>
+				<cylinder length="${wheel_height}" radius="${wheel_diameter/2}"/>
+			</geometry>
+			<material name="${wheel_material}"/>
+		</visual>
+	</link>
+
+	<link name="wheel_r_b">
+		<visual>
+			<geometry>
+				<cylinder length="${wheel_height}" radius="${wheel_diameter/2}"/>
+			</geometry>
+			<material name="${wheel_material}"/>
+		</visual>
+	</link>
+
+	<link name="wheel_l_f">
+		<visual>
+			<geometry>
+				<cylinder length="${wheel_height}" radius="${wheel_diameter/2}"/>
+			</geometry>
+			<material name="${wheel_material}"/>
+		</visual>
+	</link>
+
+	<link name="wheel_r_f">
+		<visual>
+			<geometry>
+				<cylinder length="${wheel_height}" radius="${wheel_diameter/2}"/>
+			</geometry>
+			<material name="${wheel_material}"/>
+		</visual>
+	</link>
+
+<!--Joints-->
+	<joint name="wheel_l_b_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel_l_b"/>
+		<origin xyz="${-wheel_distance/2} -0.2 ${wheel_offset_z}" rpy="0 1.57075 0" />
+		<axis xyz=" 0 0 -1"/>
+	</joint>
+
+	<joint name="wheel_r_b_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel_r_b"/>
+		<origin xyz="${wheel_distance/2} -0.2 ${wheel_offset_z}" rpy="0 1.57075 0" />
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<joint name="wheel_l_f_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel_l_f"/>
+		<origin xyz="${-wheel_distance/2} 0.2 ${wheel_offset_z}" rpy="0 1.57075 0" />
+		<axis xyz=" 0 0 -1"/>
+	</joint>
+
+	<joint name="wheel_r_f_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel_r_f"/>
+		<origin xyz="${wheel_distance/2} 0.2 ${wheel_offset_z}" rpy="0 1.57075 0" />
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<!--Transmissions-->
+<transmission name="wheel_l_b_transmission">
+	<type>transmission_interface/SimpleTransmission</type>
+	<joint name="wheel_l_b_joint"/>
+	<actuator name="motor_l">
+		<mechanicalReduction>30</mechanicalReduction>
+	</actuator>
+</transmission>
+
+<transmission name="wheel_r_b_transmission">
+	<type>transmission_interface/SimpleTransmission</type>
+	<joint name="wheel_r_b_joint"/>
+	<actuator name="motor_r">
+		<mechanicalReduction>30</mechanicalReduction>
+	</actuator>
+</transmission>
+
+</robot>
+

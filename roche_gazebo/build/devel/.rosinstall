@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/felix/indigo_ws/sandbox/roche_gazebo/build/devel/setup.sh
